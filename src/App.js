@@ -1,7 +1,7 @@
 
-import {BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import 'swiper/css';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import ScrollToTop from "./component/layout/ScrollToTop";
 import ErrorPage from "./page/404";

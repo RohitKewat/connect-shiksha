@@ -516,7 +516,8 @@
             @extend %d-block;
 
             img {
-                max-width: 100%;
+                // max-width: 100%;
+                width: 150px;
             }
         }
 
