@@ -17,13 +17,13 @@
         box-shadow: 0 0 10px rgba($color:$title-color, $alpha:.1);
         z-index: 999;
 
-        @include breakpoint(lg) {
-            top: -48px;
-        }
+        // @include breakpoint(lg) {
+        //     top: -48px;
+        // }
 
-        @include breakpoint(xl) {
-            top: -55px;
-        }
+        // @include breakpoint(xl) {
+        //     top: -55px;
+        // }
 
         .header-bottom {
             background: #fdfdfd73;
