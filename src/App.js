@@ -40,12 +40,22 @@ import { WebSocketLink } from '@apollo/client/link/ws';
 
 function App() {
 
+	// const httpLink = new HttpLink({
+	// 	uri: "http://localhost:4000/graphql",
+	// });
+
+	// const wsLink = new WebSocketLink({
+	// 	uri: "ws:localhost:4000/graphql",
+	// 	options: {
+	// 		reconnect: true
+	// 	}
+	// });
 	const httpLink = new HttpLink({
-		uri: "http://localhost:4000/graphql",
+		uri: "https://connect-shiksha-backend.onrender.com/graphql",
 	});
 
 	const wsLink = new WebSocketLink({
-		uri: "ws:localhost:4000/graphql",
+		uri: "ws:connect-shiksha-backend.onrender.com/graphql",
 		options: {
 			reconnect: true
 		}
