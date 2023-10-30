@@ -55,7 +55,7 @@ function App() {
 	});
 
 	const wsLink = new WebSocketLink({
-		uri: "ws:connect-shiksha-backend.onrender.com/graphql",
+		uri: "wss:connect-shiksha-backend.onrender.com/graphql",
 		options: {
 			reconnect: true
 		}
