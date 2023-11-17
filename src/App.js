@@ -36,6 +36,7 @@ import { ApolloClient, ApolloLink, InMemoryCache, split, ApolloProvider } from "
 import { getMainDefinition } from '@apollo/client/utilities';
 import { HttpLink } from "apollo-link-http";
 import { WebSocketLink } from '@apollo/client/link/ws';
+import DashStudent from "./page/Dashborad/dashboard-student";
 
 
 function App() {
@@ -93,6 +94,7 @@ function App() {
 					<Route path="index-6" element={<HomeSix />} />
 					<Route path="index-7" element={<HomeSeven />} />
 					<Route path="course" element={<CoursePage />} />
+					<Route path="dashboard-student" element={<DashStudent />} />
 					<Route path="course-single" element={<CourseSingle />} />
 					<Route path="course-view" element={<CourseView />} />
 					<Route path="blog" element={<BlogPage />} />
