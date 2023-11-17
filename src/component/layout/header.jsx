@@ -85,6 +85,15 @@ const Header = () => {
                   <li>
                     <NavLink to="/contact">Contact</NavLink>
                   </li>
+                  {accessToken ? (
+                    <li>
+                      <NavLink to="/dashboard-student">
+                        Dashboard Student
+                      </NavLink>
+                    </li>
+                  ) : (
+                    ""
+                  )}
                 </ul>
               </div>
 
