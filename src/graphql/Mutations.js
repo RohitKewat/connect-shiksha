@@ -18,9 +18,12 @@ mutation CreateStudent($studentInput: studentInput) {
 `;
 
 export const MUTATION_STUDENT_LOGIN = gql`
-  mutation StudentLogin($username: String!, $password: String!) {
-    studentLogin(username: $username, password: $password)
+mutation StudentLogin($username: String!, $password: String!) {
+  studentLogin(username: $username, password: $password) {
+    token
+    isFormFilled
   }
+}
 `;
 
 export const MUTATION_TEACHER_RAGISTRATION = gql`
