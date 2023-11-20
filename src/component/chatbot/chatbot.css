@@ -1,0 +1,9 @@
+.chatboticon{
+    position: fixed;
+    font-size: 50px;
+    color: green;
+    z-index: 99;
+    bottom: 30px;
+    right: 30px;
+    cursor: pointer;
+}

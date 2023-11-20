@@ -49,3 +49,11 @@ export const MUTATION_TEACHER_LOGIN = gql`
     teacherLogin(username: $username, password: $password)
   }
 `;
+export const MUTATION_GET_CHATBOT = gql`
+mutation ChatBot($question: String!) {
+  chatBot(question: $question) {
+    status
+    answer
+  }
+}
+`;

@@ -37,30 +37,31 @@ import { getMainDefinition } from '@apollo/client/utilities';
 import { HttpLink } from "apollo-link-http";
 import { WebSocketLink } from '@apollo/client/link/ws';
 import DashStudent from "./page/Dashborad/dashboard-student";
+import ChatBot from "./component/chatbot/chatbot";
 
 
 function App() {
 
-	// const httpLink = new HttpLink({
-	// 	uri: "http://localhost:4000/graphql",
-	// });
-
-	// const wsLink = new WebSocketLink({
-	// 	uri: "ws:localhost:4000/graphql",
-	// 	options: {
-	// 		reconnect: true
-	// 	}
-	// });
 	const httpLink = new HttpLink({
-		uri: "https://connect-shiksha-backend.onrender.com/graphql",
+		uri: "http://localhost:4000/graphql",
 	});
 
 	const wsLink = new WebSocketLink({
-		uri: "wss:connect-shiksha-backend.onrender.com/graphql",
+		uri: "ws:localhost:4000/graphql",
 		options: {
 			reconnect: true
 		}
 	});
+	// const httpLink = new HttpLink({
+	// 	uri: "https://connect-shiksha-backend.onrender.com/graphql",
+	// });
+
+	// const wsLink = new WebSocketLink({
+	// 	uri: "wss:connect-shiksha-backend.onrender.com/graphql",
+	// 	options: {
+	// 		reconnect: true
+	// 	}
+	// });
 
 	const splitLink = split(
 		({ query }) => {
@@ -81,7 +82,7 @@ function App() {
 
 	return (
 		<ApolloProvider client={client}>
-
+            <ChatBot/>
 			<BrowserRouter>
 				<ScrollToTop />
 				<Routes>
