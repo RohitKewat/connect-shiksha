@@ -1,32 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-const phoneNumber = "+91 9131782103";
-const address = "Bhopal, 462022";
-
-let socialList = [
-  {
-    iconName: "icofont-facebook-messenger",
-    siteLink: "#",
-  },
-  {
-    iconName: "icofont-twitter",
-    siteLink: "#",
-  },
-  {
-    iconName: "icofont-vimeo",
-    siteLink: "#",
-  },
-  {
-    iconName: "icofont-skype",
-    siteLink: "#",
-  },
-  {
-    iconName: "icofont-rss-feed",
-    siteLink: "#",
-  },
-];
-
 const Header = () => {
   const accessToken = localStorage.getItem("userToken");
 
@@ -39,18 +13,9 @@ const Header = () => {
     localStorage.removeItem("userToken");
     setloading(true);
   };
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 200) {
-      setHeaderFiexd(true);
-    } else {
-      setHeaderFiexd(false);
-    }
-  });
 
   return (
-    <header
-      className={`header-section ${headerFiexd ? "header-fixed fadeInUp" : ""}`}
-    >
+    <header className="header-section bg-light">
       <div className="header-bottom">
         <div className="container">
           <div className="header-wrapper">
@@ -59,7 +24,7 @@ const Header = () => {
                 <img
                   src="assets/images/logo/01.png"
                   alt="logo"
-                  style={{ width: "150px" }}
+                  style={{ width: "120px" }}
                 />
               </Link>
             </div>
@@ -77,9 +42,6 @@ const Header = () => {
                   </li>
                   <li>
                     <NavLink to="/team">Team</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/instructor">Instructor</NavLink>
                   </li>
 
                   <li>

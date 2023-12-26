@@ -1,6 +1,7 @@
 import { BsFillQuestionOctagonFill } from "react-icons/bs";
 import { Modal, Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import chatbotimg from "../../assets/images/app/chatbot.gif"
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { MUTATION_GET_CHATBOT } from "../../graphql/Mutations";
@@ -11,30 +12,34 @@ const ChatBot = () => {
     const [dataState, setDataState] = useState("");
     const [chatBot] = useMutation(MUTATION_GET_CHATBOT);
 
-    const handleClose = () =>{
+    const handleClose = () => {
         setPromptState("")
         setDataState("")
         setShow(false)
-    } ;
+    };
     const handleShow = () => setShow(true);
 
-    const getAnswer= async()=>{
-        const { data } = await chatBot({ variables: {
-            "question" : promptState
-        } });
-     setDataState(data.chatBot.answer)
+    const getAnswer = async () => {
+        const { data } = await chatBot({
+            variables: {
+                "question": promptState
+            }
+        });
+        setDataState(data.chatBot.answer)
     }
     return (
         <>
-            <BsFillQuestionOctagonFill width={20} onClick={handleShow} className="chatboticon" />
+            <img src={chatbotimg} alt="chatbot" onClick={handleShow} className="chatboticon" />
+
+            {/* <BsFillQuestionOctagonFill width={20} onClick={handleShow} className="chatboticon" /> */}
             <Modal show={show} onHide={handleClose} size="" >
                 <Modal.Header closeButton>
                     <Modal.Title>Ask Any Question !</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form.Control aria-label="First name" 
-                    onChange={(e)=> setPromptState(e.target.value)}
-                    value={promptState}
+                    <Form.Control aria-label="First name"
+                        onChange={(e) => setPromptState(e.target.value)}
+                        value={promptState}
                     />
                     <div>
                         {dataState}
@@ -43,7 +48,7 @@ const ChatBot = () => {
                 <Modal.Footer>
                     {
                         promptState ?
-                            <Button variant="success" onClick={()=> getAnswer()}>
+                            <Button variant="success" onClick={() => getAnswer()}>
                                 Get answer!
                             </Button>
 
