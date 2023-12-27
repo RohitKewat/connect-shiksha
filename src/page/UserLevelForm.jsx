@@ -25,7 +25,7 @@ const UserLevelForm = () => {
     <>
       <Header />
       <Container className="p-5  m-5">
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className="p-5">
           <Form.Group controlId="course">
             <Form.Label>Course</Form.Label>
             <Form.Control
