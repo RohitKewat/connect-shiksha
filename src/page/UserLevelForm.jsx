@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
+import { useMutation } from "@apollo/client";
 import Header from "../component/layout/header";
 import Footer from "../component/layout/footer";
+import { MUTATION_USER_LEVEL_FORM } from "../graphql/Mutations";
+import { useNavigate } from "react-router-dom";
 
 const UserLevelForm = () => {
+  const navigate = useNavigate();
+  const [createUserLevelForm, { loading, error }] = useMutation(MUTATION_USER_LEVEL_FORM);
   const [formData, setFormData] = useState({
     course: null,
     language: null,
@@ -14,18 +19,41 @@ const UserLevelForm = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
+    console.log("usertoken",localStorage.getItem("userToken"));
     e.preventDefault();
-    // Handle form submission logic here
+    if (!formData.course || !formData.language || !formData.level || !formData.location || !formData.type) {
+     console.log("form data test",formData);
+      alert("Please fill all the fields");
+
+      return;
+    }
+    const userToken = await localStorage.getItem("userToken");
+    createUserLevelForm({
+      variables: {
+      "userLevelFormInput":{
+        course: formData.course,
+        language: formData.language,
+        level: formData.level,
+        location: formData.location,
+        type: formData.type,
+        access_token: userToken
+      }
+      }
+    }).then((res) => {
+      navigate("/");
+    }).catch((err) => { console.log("error ",err) });
   };
+
 
   return (
     <>
       <Header />
       <Container className="p-5  m-5">
-        <Form onSubmit={handleSubmit} className="p-5">
+        <Form onSubmit={handleSubmit} className="p-5 m-5">
           <Form.Group controlId="course">
             <Form.Label>Course</Form.Label>
             <Form.Control
@@ -75,8 +103,8 @@ const UserLevelForm = () => {
               onChange={handleChange}
             >
               <option value="">Select Type</option>
-              <option value="Teacher">Teacher</option>
-              <option value="Student">Student</option>
+              <option value="teacher">Teacher</option>
+              <option value="student">Student</option>
             </Form.Control>
           </Form.Group>
 

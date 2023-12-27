@@ -61,7 +61,7 @@ mutation ChatBot($question: String!) {
 }
 `;
 export const MUTATION_USER_LEVEL_FORM = gql`
-mutation Mutation($userLevelFormInput: userLevelFormInput) {
+mutation CreateUserLevelForm($userLevelFormInput: userLevelFormInput) {
   createUserLevelForm(UserLevelFormInput: $userLevelFormInput) {
     id
     type
@@ -74,3 +74,4 @@ mutation Mutation($userLevelFormInput: userLevelFormInput) {
   }
 }
 `;
+
