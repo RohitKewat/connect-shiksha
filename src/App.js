@@ -25,6 +25,7 @@ import { HttpLink } from "apollo-link-http";
 import { WebSocketLink } from '@apollo/client/link/ws';
 import DashStudent from "./page/Dashborad/dashboard-student";
 import ChatBot from "./component/chatbot/chatbot";
+import UserLevelForm from "./page/UserLevelForm";
 
 
 function App() {
@@ -88,6 +89,7 @@ function App() {
 					<Route path="login" element={<LoginPage />} />
 					<Route path="signup" element={<SignupPage />} />
 					<Route path="forgetpass" element={<ForgetPass />} />
+					<Route path="UserLevelForm" element={<UserLevelForm />} />
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 			</BrowserRouter>
