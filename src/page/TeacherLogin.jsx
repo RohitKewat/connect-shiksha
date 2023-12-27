@@ -27,12 +27,16 @@ const TeacherLogin = () => {
         const { data } = await loginTeacher({ variables: loginData });
 
         localStorage.setItem("userToken", data.teacherLogin.token);
-        Swal.fire({
-          icon: "success",
-          title: "Login successful!",
-          text: "You have successfully logged in.",
-        });
-        navigate("/");
+        // Swal.fire({
+        //   icon: "success",
+        //   title: "Login successful!",
+        //   text: "You have successfully logged in.",
+        // });
+        if(!data.teacherLogin.isFormFilled){
+          navigate("/userlevelform");
+        }else{
+          navigate("/");
+        }
       } catch (error) {
         console.error("Login error:", error);
 
