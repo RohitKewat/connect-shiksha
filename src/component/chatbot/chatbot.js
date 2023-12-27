@@ -19,6 +19,9 @@ const ChatBot = () => {
     const handleShow = () => setShow(true);
 
     const getAnswer= async()=>{
+        if(!promptState){
+            return
+        }
         const { data } = await chatBot({ variables: {
             "question" : promptState
         } });
@@ -36,9 +39,9 @@ const ChatBot = () => {
                     onChange={(e)=> setPromptState(e.target.value)}
                     value={promptState}
                     />
-                    <div>
-                        {dataState}
-                    </div>
+                <div >
+                    {dataState}
+                </div>
                 </Modal.Body>
                 <Modal.Footer>
                     {

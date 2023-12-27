@@ -26,7 +26,7 @@ const TeacherLogin = () => {
       try {
         const { data } = await loginTeacher({ variables: loginData });
 
-        localStorage.setItem("userToken", data.teacherLogin);
+        localStorage.setItem("userToken", data.teacherLogin.token);
         Swal.fire({
           icon: "success",
           title: "Login successful!",
