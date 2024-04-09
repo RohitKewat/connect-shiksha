@@ -1,10 +1,11 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const price = "89";
 const excenge = "Limited time offer";
 const paymentTitle = "Secure Payment:";
 const shareTitle = "Share This Course:";
-const btnText = "Enrolled Now";
+const btnText = "Enrolled Now ";
 
 const csdcList = [
   {
@@ -67,7 +68,40 @@ const socialList = [
   },
 ];
 
+
 const CourseSideDetail = () => {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
+  const handlePayment = async () => {
+    const options = {
+      key: 'rzp_test_Uhe2TNvMVZCz1Y',
+      amount: 30000,
+      name: 'Connect ',
+      description: 'Some Description',
+      handler: function (response) {
+        alert(response.razorpay_payment_id);
+      },
+      prefill: {
+        name: 'Customer Name',
+        email: 'customer@example.com'
+      },
+      notes: {
+        address: 'Some Address'
+      },
+      theme: {
+        color: '#F37254'
+      }
+    };
+
+    const rzp1 = new window.Razorpay(options);
+    rzp1.open();
+
+  };
   return (
     <div className="course-side-detail">
       <div className="csd-title">
@@ -108,9 +142,9 @@ const CourseSideDetail = () => {
         </div>
 
         <div className="course-enroll">
-          <Link to="/signup" className="lab-btn">
-            <span>{btnText}</span>
-          </Link>
+          <div onClick={() => handlePayment()} className="lab-btn">
+            <span >{btnText}</span>
+          </div>
         </div>
       </div>
     </div>
